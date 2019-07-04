@@ -1,5 +1,10 @@
 # sift_anatomy
 
+Note: This repository contains two programs on separate folders
+
+        original/   The original ``sift_anatomy'' code by Ives Rey Otero
+        simd/       An optimized reimplementation by Marc Lebrun using AVX
+
 
 ## Overview
 
