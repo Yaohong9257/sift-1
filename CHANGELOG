@@ -1,3 +1,13 @@
+GIT version on github.com/cmla/sift (july 2019)
+ - add "sift_roi" interface to process only part of an image
+ - add Marc Lebrun's implementation using SIMD and other optimizations
+ - add .so object to be used from within ctypes
+ - the new interfaces are written by Carlo de Franchis, Julien Michel,
+   David Youssefi, and Carole Amiot
+ - the code is packaged by Enric Meinhardt-Llopis to be used as a
+   submodule from within s2p
+
+
 sift_anatomy_20140420_extra.tar.gz
  - first to contain describe_keys.c
 

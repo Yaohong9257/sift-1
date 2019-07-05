@@ -1,7 +1,6 @@
 CXXFLAGS ?= -march=native -O3
-override CXXFLAGS := $(CXXFLAGS) -fPIC
-override CXXLIBS  := $(CXXLIBS)
-override LDLIBS   := $(LDLIBS) -lm
+override CXXFLAGS := $(CXXFLAGS) -fPIC `gdal-config --cflags`
+override LDLIBS   := $(LDLIBS) -lm `gdal-config --libs`
 
 OBJ = LibImages/LibImages.o \
       LibSSE/LibSSE.o \
@@ -12,15 +11,19 @@ OBJ = LibImages/LibImages.o \
       Utilities/Memory.o \
       Utilities/Parameters.o \
       Utilities/Time.o \
-      Utilities/Utilities.o \
-      sift4ctypes.o \
+      Utilities/Utilities.o
 
 LIB = libsift4ctypes.so
 
-all: $(LIB)
+BIN = sift_roi
 
-$(LIB): $(OBJ)
-	$(CXX) -fPIC -shared -o $@ $^
 
-clean:
-	rm -f $(LIB) $(OBJ)
+all: $(BIN) $(LIB)
+
+$(LIB): sift4ctypes.o $(OBJ)
+	$(CXX) $(LDFLAGS) -shared -o $@ $^ $(LDLIBS)
+
+$(BIN): sift_roi.cpp $(OBJ)
+
+
+clean: ; $(RM) $(BIN) $(LIB) $(OBJ) *.o
