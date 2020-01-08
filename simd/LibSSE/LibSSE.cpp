@@ -63,7 +63,7 @@ __m256 atan2_256(
 
 
 //! Compute the x modulus y.
-#ifdef __SSE__
+#ifdef __SSE_4_1__
 __m128 modulus_128(
   const __m128& x,
   const __m128& y) {
@@ -76,7 +76,7 @@ __m128 modulus_128(
   n = _mm_round_ps(z / y, _MM_FROUND_TO_ZERO);
   return z - n * y;
 }
-#endif // __SSE__
+#endif // __SSE_4_1__
 #ifdef __AVX__
 __m256 modulus_256(
   const __m256& x,
@@ -94,7 +94,7 @@ __m256 modulus_256(
 
 
 //! Compute the exponential of a value.
-#ifdef __SSE__
+#ifdef __SSE_4_1__
 __m128 exp_128(
   const __m128& x) {
 
@@ -129,7 +129,7 @@ __m128 exp_128(
   //! Return the result
   return t * _mm_castsi128_ps(_mm_slli_epi32(emm0, 23));
 }
-#endif // __SSE__
+#endif // __SSE_4_1__
 #ifdef __AVX__
 __m256 exp_256(
   const __m256& x) {
@@ -176,7 +176,7 @@ __m256 exp_256(
 
 
 //! Compute the orientation bin.
-#ifdef __SSE__
+#ifdef __SSE_4_1__
 __m128 ori_to_bin_128(
   const __m128& ori,
   const int nbins) {
@@ -195,7 +195,7 @@ __m128 ori_to_bin_128(
   //! Return the modulo of it
   return val - xbins * _mm_round_ps(val / xbins, _MM_FROUND_TO_ZERO);
 }
-#endif // __SSE__
+#endif // __SSE_4_1__
 #ifdef __AVX__
 __m256 ori_to_bin_256(
   const __m256& ori,
@@ -215,7 +215,7 @@ __m256 ori_to_bin_256(
   //! Return the modulo of it
   return val - xbins * _mm256_round_ps(val / xbins, _MM_FROUND_TO_ZERO);
 }
-#endif // __SSE__
+#endif // __AVX__
 
 
 
