@@ -319,7 +319,7 @@ void KeyPoint::extractFeatureVector(
   }
 #endif // __AVX__
 
-#ifdef __SSE__
+#ifdef __SSE_4_1__
   //! SSE version
   for (; n < nbPix - 4; n += 4) {
 
@@ -360,7 +360,7 @@ void KeyPoint::extractFeatureVector(
     _mm_storeu_ps(arr2 + n, applyMask_ps(m2, x0, x1 - abs_128(j0 - beta)));
     _mm_storeu_ps(arr3 + n, applyMask_ps(m3, x0, x1 - abs_128(j0 + x1 - beta)));
   }
-#endif // __SSE__
+#endif // __SSE_4_1__
 
   //! Normal version
   for (; n < nbPix; n++) {

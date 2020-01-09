@@ -944,7 +944,7 @@ void Sift::accumulateOrientationHistogram(
       _mm256_storeu_ps(vg + n, ori_to_bin_256(ori, nbins));
     }
 #endif // __SSE__
-#ifdef __SSE__
+#ifdef __SSE_4_1__
     //! SSE version
     for (; sj <= sjMax - 4; sj += 4, n += 4) {
 
@@ -963,7 +963,7 @@ void Sift::accumulateOrientationHistogram(
       //! Determine the bin index in the circular histogram
       _mm_storeu_ps(vg + n, ori_to_bin_128(ori, nbins));
     }
-#endif // __SSE__
+#endif // __SSE_4_1__
 
     //! Normal version
     for (; sj <= sjMax; sj++, n++) {

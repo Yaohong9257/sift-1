@@ -28,11 +28,11 @@ __m256 atan2_256(
 /**
  * @brief Compute the x modulus y.
  **/
- #ifdef __SSE__
+ #ifdef __SSE_4_1__
 __m128 modulus_128(
   const __m128& x,
   const __m128& y);
-#endif // __SSE__
+#endif // __SSE_4_1__
 #ifdef __AVX__
 __m256 modulus_256(
   const __m256& x,
@@ -62,10 +62,10 @@ inline __m256 hypot_256(
 /**
  * @brief Compute the exponential of a value.
  **/
- #ifdef __SSE__
+ #ifdef __SSE_4_1__
 __m128 exp_128(
   const __m128& x);
-#endif // __SSE__
+#endif // __SSE_4_1__
 #ifdef __AVX__
 __m256 exp_256(
   const __m256& x);
@@ -92,11 +92,11 @@ inline __m256 abs_256(
 /**
  * @brief Compute the orientation bin.
  **/
-#ifdef __SSE__
+#ifdef __SSE_4_1__
 __m128 ori_to_bin_128(
   const __m128& ori,
   const int nbins);
-#endif // __SSE__
+#endif // __SSE_4_1__
 #ifdef __AVX__
 __m256 ori_to_bin_256(
   const __m256& ori,
