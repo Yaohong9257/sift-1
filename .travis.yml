@@ -10,7 +10,6 @@ env:
     - CXX="g++ -std=c++11"
   jobs:
     - CXXFLAGS=""
-    - DUMMY=""
 
 addons:
   apt:
