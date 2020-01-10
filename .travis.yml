@@ -10,6 +10,7 @@ env:
     - CXX="g++ -std=c++11"
   jobs:
     - CXXFLAGS=""
+    - CXXFLAGS="-O3 -march=native"
 
 addons:
   apt:
