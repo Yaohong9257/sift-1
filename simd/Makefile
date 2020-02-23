@@ -29,7 +29,7 @@ $(LIB): sift4ctypes.cpp $(OBJ)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $^ $(LDLIBS)
 
 # build command line interface with gdal flags
-$(BIN): CXXFLAGS := $(CXXFLAGS) `gdal-config --cflags`
+$(BIN): CXXFLAGS := $(CXXFLAGS) `gdal-config --cflags` -std=c++11
 $(BIN): LDLIBS   := $(LDLIBS) `gdal-config --libs`
 $(BIN): sift_roi.cpp $(OBJ)
 
