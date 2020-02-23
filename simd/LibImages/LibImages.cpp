@@ -717,7 +717,7 @@ void Image::computeGradient(
 #endif // __AVX__
 #ifdef __SSE__
     const __m128 x2 = _mm_set1_ps(0.5f);
-    for (; j < m_width - 8; j += 8) {
+    for (; j < m_width - 4; j += 4) {
       _mm_storeu_ps(oX + j, x2 * (_mm_loadu_ps(iB + j) - _mm_loadu_ps(iT + j)));
     }
 #endif // __SSE__
