@@ -159,6 +159,7 @@ extern "C" {
     }
 
     // Compute the Euclidian distance for every pairs of points
+    #pragma omp parallel for
     for (int i = 0; i < nb_sift_k1; i++) {
         float distA = INFINITY;
         float distB = INFINITY;
