@@ -59,7 +59,7 @@ float distance(const float* k1, const float* k2, int length, const float* s1, co
 
 }
 
-extern "C"{
+extern "C" {
   /**
    * This function is meant to be mapped to python using ctypes.
    *
@@ -123,17 +123,17 @@ extern "C"{
   }
 
   float * matching(const float * k1,
-                const float * k2,
-                const unsigned int length_desc,
-                const unsigned int offset_desc,
-                const unsigned int nb_sift_k1,
-                const unsigned int nb_sift_k2,
-                const float sift_thresh,
-                const float epi_thresh,
-                double * fund_mat,
-                const bool use_fundamental_mat,
-                const bool use_relative_method,
-                unsigned int & nb_match){
+                   const float * k2,
+                   const unsigned int length_desc,
+                   const unsigned int offset_desc,
+                   const unsigned int nb_sift_k1,
+                   const unsigned int nb_sift_k2,
+                   const float sift_thresh,
+                   const float epi_thresh,
+                   double * fund_mat,
+                   const bool use_fundamental_mat,
+                   const bool use_relative_method,
+                   unsigned int & nb_match) {
     // Structure of k1 and k2 is supposed to be the following one :
     // 4 first numbers : pos_y pos_x scale orientation
     // length_desc floats representing the descriptors
@@ -154,7 +154,7 @@ extern "C"{
         rectifying_similarities_from_affine_fundamental_matrix(s1, s2, fund_mat);
         keypoints_distance_overloaded = distance_epipolar;
     }
-    else{
+    else {
         keypoints_distance_overloaded = distance;
     }
 
@@ -183,7 +183,7 @@ extern "C"{
             val = distA / distB;
         }
         if (val < sift_thresh_square) {
-            matches[nb_match*4] = k1[i*(length_desc+offset_desc)];
+            matches[nb_match*4+0] = k1[i*(length_desc+offset_desc)];
             matches[nb_match*4+1] = k1[i*(length_desc+offset_desc)+1];
             matches[nb_match*4+2] = k2[indexA*(length_desc+offset_desc)];
             matches[nb_match*4+3] = k2[indexA*(length_desc+offset_desc)+1];
@@ -202,5 +202,4 @@ extern "C"{
     if (buffer != NULL)
       delete [] buffer;
   }
-
 }
